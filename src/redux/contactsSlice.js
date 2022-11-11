@@ -1,4 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  
+  persistReducer,
+  // FLUSH,
+  // REHYDRATE,
+  // PAUSE,
+  // PERSIST,
+  // PURGE,
+  // REGISTER,
+} from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
 
  const contactsInitialState = [];
 
@@ -11,7 +23,7 @@ import { createSlice } from "@reduxjs/toolkit";
       state.push(action.payload)
     },
     deleteContacts(state, action) {
-      const id = state.findIndex(contact => contact.id === action.payload);
+      const id = state.findIndex(contacts => contacts.id === action.payload);
 
       //const id = state.state.filter(contact => contact.id !== id);
       state.splice(id, 1)
@@ -25,7 +37,21 @@ import { createSlice } from "@reduxjs/toolkit";
       }
     },
   },
-});
+ });
 
-export const { addTask, deleteTask, toggleCompleted } = contactsSlice.actions;
-export const contactsReducer = contactsSlice.reducer;
+ 
+const contactsReducer = contactsSlice.reducer;
+
+
+
+const persistConfig = {
+  key: 'contacts',
+  storage,
+};
+
+export const persistContactsReducer = persistReducer(
+  persistConfig,
+  contactsReducer
+);
+
+export const { addContacts, deleteContacts, toggleCompleted } = contactsSlice.actions;

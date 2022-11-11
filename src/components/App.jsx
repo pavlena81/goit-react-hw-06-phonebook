@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { FormLabel } from './Form/Form';
 import { Filter } from './Filter/Filter';
@@ -6,8 +8,11 @@ import { FormContacts } from './Contacts/Contacts';
 
 import { nanoid } from "nanoid";
 import { Container, Box } from 'components/App.styled';
+import { deleteContacts } from 'redux/contactsSlice';
 
- export const App = () => {
+export const App = () => {
+   const dispatch = useDispatch();
+  //const handleDelete = () => dispatch(deleteContacts(contacts.id));
 
       const[contacts, setContacts] = useState([{id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
@@ -33,10 +38,10 @@ import { Container, Box } from 'components/App.styled';
      console.log(setContacts)
    };
 
-
-  const deleteContact = id => {
-     setContacts(contacts.filter(contact => contact.id !== id))
-    };
+  const deleteContact = id => dispatch(deleteContacts(id));
+  // const deleteContacts = id => {
+  //    setContacts(contacts.filter(contact => contact.id !== id))
+  //   };
     
   const filterContact = e => {
     setFilter(e.currentTarget.value);
@@ -79,7 +84,7 @@ import { Container, Box } from 'components/App.styled';
         <h2>Contacts</h2>
          <Filter filter={filter} filterContact={filterContact} />
          <FormContacts contacts={findContacts()}
-                       deleteContact={deleteContact}   />       
+                       deleteContact={deleteContact} />       
          </Container>
          </Box> 
    );
