@@ -1,5 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
+import { addContacts } from 'redux/contactsSlice';
+
+import { nanoid } from "nanoid";
 
 import { Formik, Form, Field } from 'formik';
 
@@ -24,7 +29,22 @@ const Forma = styled(Form)`
 padding: 20px;
 border: 1px solid #7FB3D5;
 `
-export const FormLabel = ({ handleSubmit }) => {
+export const FormLabel = () => {
+
+    const dispatch = useDispatch();
+  
+    const contacts = useSelector(getContacts);
+    
+    console.log(contacts);
+    
+    const handleSubmit = ( values, { resetForm }) => {
+    console.log(values);
+    
+    values.id = nanoid();
+        dispatch(addContacts( values ));
+        resetForm();
+        
+  };
 
 
     return (
@@ -58,7 +78,7 @@ export const FormLabel = ({ handleSubmit }) => {
     )
 }
 
-FormLabel.propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
+// FormLabel.propTypes = {
+//     handleSubmit: PropTypes.func.isRequired,
     
-}
+// }
