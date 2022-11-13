@@ -50,4 +50,4 @@ export const persistContactsReducer = persistReducer(
   contactsReducer
 );
 
-export const { addContacts, deleteContacts, toggleCompleted } = contactsSlice.actions;
+export const { addContacts, deleteContacts, findContacts } = contactsSlice.actions;
