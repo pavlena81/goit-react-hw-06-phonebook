@@ -8,6 +8,7 @@ import { FormContacts } from './Contacts/Contacts';
 
 //import { nanoid } from "nanoid";
 import { Container, Box } from 'components/App.styled';
+import { FcContacts } from 'react-icons/fc';
 // import { deleteContacts } from 'redux/contactsSlice';
 // import { getContacts } from 'redux/selectors';
 
@@ -78,7 +79,9 @@ export const App = () => {
     return (
      <Box>
      <Container >
-      <h1>Phonebook</h1> 
+          <h1>Phonebook
+          <FcContacts/>
+          </h1> 
           <FormLabel  />
           {/* handleSubmit={handleSubmit} */}
         <h2>Contacts</h2>

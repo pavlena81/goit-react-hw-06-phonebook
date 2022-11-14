@@ -13,16 +13,16 @@ export const FormContacts = () => {
 
   //const normalisedFilter = filter.toLowerCase();
    const contactsFilter = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter)
+    contact.name.toLowerCase().includes(filter.payload.filter.filter)
    );
   
   console.log(contactsFilter);
-  console.log(filter);
+  console.log(filter.payload.filter.filter);
 
   return (
     < ListContacts >
       {/* {filterList === 0 && <h2>there isn't any contacts</h2>} */}
-      {contacts.map(contact => (
+      {contactsFilter.map(contact => (
         <ItemContacts key={contact.id}>
                     {contact.name}:     {contact.number}
                     <Btn type="button" onClick={()=>dispatch(deleteContacts(contact.id))}>

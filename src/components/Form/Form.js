@@ -24,6 +24,11 @@ padding: 10px 15px;
 margin: 10px;
 border: 2px solid #D4E6F1;
 border-radius: 2px;
+    &:focus{
+        outline:none;
+        border-radius: 6px;
+        box-shadow: 0 0 10px #93caff;
+    }
 `
 const Forma = styled(Form)`
 padding: 20px;
