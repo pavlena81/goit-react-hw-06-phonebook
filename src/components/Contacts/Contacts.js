@@ -4,21 +4,25 @@ import { deleteContacts } from 'redux/contactsSlice';
 import { getContacts } from 'redux/selectors';
 
 import { ListContacts, ItemContacts, Btn } from './Contacts.styled';
+import { setStatusFilter } from 'redux/filterSlice';
 
 export const FormContacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-  //const filter = useSelector(getStatusFilter);
+  const filter = useSelector(setStatusFilter);
 
-  // const contactsFilter = contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(filter)
-  // );
- 
-  //const filterList = contactsFilter();
+  //const normalisedFilter = filter.toLowerCase();
+   const contactsFilter = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter)
+   );
+  
+  console.log(contactsFilter);
+  console.log(filter);
+
   return (
     < ListContacts >
       {/* {filterList === 0 && <h2>there isn't any contacts</h2>} */}
-      { contacts && contacts.map(contact => (
+      {contacts.map(contact => (
         <ItemContacts key={contact.id}>
                     {contact.name}:     {contact.number}
                     <Btn type="button" onClick={()=>dispatch(deleteContacts(contact.id))}>

@@ -1,7 +1,7 @@
 //import PropTypes from 'prop-types';
 
 import { useDispatch, useSelector} from 'react-redux';
-import { filtersReducer } from 'redux/filterSlice';
+import { setStatusFilter } from 'redux/filterSlice';
 import {getStatusFilter} from 'redux/selectors';
  
 import { Label, Input } from './Filter.styled';
@@ -12,17 +12,18 @@ export const Filter = () => {
 
   const dispatch = useDispatch();
 
-  const filter = useSelector(getStatusFilter);
-  //const contacts = useSelector(getContacts);
+   const filter = useSelector(getStatusFilter);
+   //const contacts = useSelector(getContacts);
   
 
-  //  const contactsFilter = contacts.filter(contact =>
-  //      contact.name.toLowerCase().includes(filter));
+    // const contactsFilter = contacts.filter(contact =>
+    // contact.name.toLowerCase().includes(filter));
  
-  //const filterList = contactsFilter();
+   //const filterList = contactsFilter();
   
   const filterContact = (e) => {
-    dispatch(filtersReducer(e.currentTarget.value))
+
+    dispatch(setStatusFilter(e.currentTarget.value.trim()))
   }
 
    
