@@ -17,13 +17,11 @@ const contactsInitialState = {
    },
   reducers: {
     addContacts(state, action) {
-      //state.value += 1;
       state.contacts.push(action.payload)
     },
     deleteContacts(state, action) {
       state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
-      // const id = state.findIndex(contacts => contacts.id === action.payload);
-     // state.splice(id, 1)
+     
     },
 
     findContacts(state, action) {
@@ -39,8 +37,6 @@ const contactsInitialState = {
 
  
 const contactsReducer = contactsSlice.reducer;
-
-
 
 const persistConfig = {
   key: 'contacts',

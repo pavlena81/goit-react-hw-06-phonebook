@@ -11,22 +11,12 @@ import { Label, Input } from './Filter.styled';
 export const Filter = () => {
 
   const dispatch = useDispatch();
-
-   const filter = useSelector(getStatusFilter);
-   //const contacts = useSelector(getContacts);
-  
-
-    // const contactsFilter = contacts.filter(contact =>
-    // contact.name.toLowerCase().includes(filter));
- 
-   //const filterList = contactsFilter();
+  const filter = useSelector(getStatusFilter);    
   
   const filterContact = (e) => {
 
     dispatch(setStatusFilter(e.currentTarget.value.trim()))
   }
-
-   
 
   return (
     <Label>

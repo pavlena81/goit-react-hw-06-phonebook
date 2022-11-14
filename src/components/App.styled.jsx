@@ -20,6 +20,15 @@ export const Container = styled.div`
         alignItems: 'center',
         fontSize: 20,
         color: '#010101',
-        
-        
+                
+`
+export const Title = styled.h1`
+        display: flex;
+        align-items: center;
+        gap: 10px;
+`
+export const SubTitle = styled.h2`
+        display: flex;
+        align-items: center;
+        gap: 10px;
 `

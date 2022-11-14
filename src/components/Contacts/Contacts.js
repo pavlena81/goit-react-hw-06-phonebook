@@ -11,17 +11,17 @@ export const FormContacts = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(setStatusFilter);
 
-  //const normalisedFilter = filter.toLowerCase();
-   const contactsFilter = contacts.filter(contact =>
+  
+  const contactsFilter = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.payload.filter.filter)
-   );
+  );
   
   console.log(contactsFilter);
   console.log(filter.payload.filter.filter);
 
   return (
     < ListContacts >
-      {/* {filterList === 0 && <h2>there isn't any contacts</h2>} */}
+      
       {contactsFilter.map(contact => (
         <ItemContacts key={contact.id}>
                     {contact.name}:     {contact.number}
