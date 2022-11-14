@@ -2,9 +2,9 @@
 // import { useDispatch, useSelector } from 'react-redux';
 
 // import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { FormLabel } from './Form/Form';
+import { FormLabel } from './Form/Form'; 
 import { Filter } from './Filter/Filter';
-import { FormContacts } from './Contacts/Contacts';
+import { FormContacts } from './Contacts/Contacts'; 
 
 //import { nanoid } from "nanoid";
 import { Container, Box } from 'components/App.styled';
