@@ -22,7 +22,7 @@ export const FormContacts = () => {
   return (
     < ListContacts >
       
-      {contactsFilter.map(contact => (
+      {contacts.map(contact => (
         <ItemContacts key={contact.id}>
                     {contact.name}:     {contact.number}
                     <Btn type="button" onClick={()=>dispatch(deleteContacts(contact.id))}>
