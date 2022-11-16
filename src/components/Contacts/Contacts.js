@@ -11,7 +11,7 @@ export const FormContacts = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(setStatusFilter);
 
-  
+  //const normalizedFilter = filter.toLowerCase();
   const contactsFilter = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.payload.filter.filter)
   );
@@ -22,7 +22,7 @@ export const FormContacts = () => {
   return (
     < ListContacts >
       
-      {contacts.map(contact => (
+      {contactsFilter.map(contact => (
         <ItemContacts key={contact.id}>
                     {contact.name}:     {contact.number}
                     <Btn type="button" onClick={()=>dispatch(deleteContacts(contact.id))}>
