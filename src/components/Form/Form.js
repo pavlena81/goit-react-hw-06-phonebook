@@ -11,7 +11,7 @@ import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components';
 
 import { Label, Btn, } from './Form.styled';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const initialValues = {
     name: '',
@@ -45,9 +45,15 @@ export const FormLabel = () => {
     const handleSubmit = ( values, { resetForm }) => {
     console.log(values);
     
-    values.id = nanoid();
-        dispatch(addContacts( values ));
-        resetForm();
+        values.id = nanoid();
+            contacts.find(contact => contact.name.toLowerCase() === values.name.toLowerCase())
+       ? Notify.info('Contacts is already in list-contacts')
+       
+       : dispatch(addContacts( values ));
+          
+       
+    //dispatch(addContacts( values ));
+    resetForm();
         
   };
 
